@@ -10,6 +10,7 @@ import android.view.OrientationEventListener;
 
 import org.webrtc.ScreenCapturerAndroid;
 import org.webrtc.VideoCapturer;
+import java.util.Objects;
 
 public class ScreenCaptureController extends AbstractVideoCaptureController {
     /**
