@@ -7,6 +7,7 @@
 //
 #import <AVFoundation/AVFoundation.h>
 #import <objc/runtime.h>
+#import <React/RCTView.h>
 
 #import <React/RCTLog.h>
 #if !TARGET_OS_OSX
@@ -52,7 +53,7 @@ typedef NS_ENUM(NSInteger, RTCVideoViewObjectFit) {
  */
 
 #if !TARGET_OS_OSX
-@interface RTCVideoView : UIView <RTCVideoViewDelegate>
+@interface RTCVideoView : RCTView <RTCVideoViewDelegate>
 #else
 @interface RTCVideoView : NSView <RTCVideoViewDelegate>
 #endif
@@ -78,7 +79,7 @@ typedef NS_ENUM(NSInteger, RTCVideoViewObjectFit) {
  * {@link #_videoSize}.
  */
 #if !TARGET_OS_OSX
-@property (nonatomic, readonly) __kindof UIView<RTCVideoRenderer> *videoView;
+@property (nonatomic, readonly) __kindof RCTView<RTCVideoRenderer> *videoView;
 #else
 @property (nonatomic, readonly) __kindof NSView<RTCVideoRenderer> *videoView;
 #endif
@@ -191,7 +192,7 @@ typedef NS_ENUM(NSInteger, RTCVideoViewObjectFit) {
     - (void)layout {
 #endif
 #if !TARGET_OS_OSX
-  UIView *subview = self.videoView;
+  RCTView *subview = self.videoView;
 #else
   NSView *subview = self.videoView;
 #endif
@@ -359,7 +360,7 @@ typedef NS_ENUM(NSInteger, RTCVideoViewObjectFit) {
 RCT_EXPORT_MODULE()
 
 #if !TARGET_OS_OSX
-- (UIView *)view {
+- (RCTView *)view {
 #else
 - (NSView *)view {
 #endif
